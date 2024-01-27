@@ -28,5 +28,5 @@ const getTodosSuccess=(todos)=>{
       return {
             type:GET_TODOS_SUCCESS,
             payload: todos,
-      }
-}
+      };
+};
