@@ -6,7 +6,7 @@ const GET_TODOS_SUCCESS = "GET_TODOS_SUCCES";
 const GET_TODOS_FAILED = "GET_TODOS_FAILED";
 
 // states  
-const initialTodosStore ={
+const initialTodosState ={
       todos:[],
       isLoading:false,
       error: null,
@@ -29,4 +29,33 @@ const getTodosSuccess=(todos)=>{
             type:GET_TODOS_SUCCESS,
             payload: todos,
       };
+};
+
+// reducers
+const todosReducer = (state = initialTodosState)=>{
+      switch (isAction.type) {
+            case GET_TODOS_REQUEST:
+                  
+                  return{
+                        ...state,
+                        isLoading: true,
+                  };
+            case GET_TODOS_SUCCESS:
+                  
+                  return{
+                        ...state,
+                        isLoading: false,
+                        todos: action.payload,
+                  };
+            case GET_TODOS_FAILED:
+                  
+                  return{
+                        ...state,
+                        isLoading: false,
+                        error: action.payload,
+                  };
+      
+            default:
+                  return state;
+      }
 };
